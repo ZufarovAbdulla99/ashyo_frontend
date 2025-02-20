@@ -1,11 +1,11 @@
 "use client";
 import { ContextType } from "@/types/ContextType";
-import React, { createContext, ReactNode, useState, useEffect } from "react";
+import React, { createContext, ReactNode, useState } from "react";
 
 export const Context = createContext<ContextType>({
   showCategory: false,
   setShowCategory: () => null,
-  token: "",
+  token: null,
   setToken: () => null,
 });
 
@@ -13,25 +13,27 @@ export const GlobalContext: React.FC<{ children: ReactNode }> = ({ children }) =
   const [showCategory, setShowCategory] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>(null);
 
-//   localStorage'dan tokenni faqat brauzerda o‘qish
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedToken = localStorage.getItem("token");
-      if (storedToken) {
-        setToken(JSON.parse(storedToken));
+  // Token ni o'rnatish uchun yangi funksiya 
+  const handleSetToken = (newToken: string | null) => {
+    setToken(newToken);
+    
+    // Faqat client-side da localStorage ga saqlash
+    if (typeof window !== 'undefined' && newToken) {
+      try {
+        localStorage.setItem('token', JSON.stringify(newToken));
+      } catch (error) {
+        console.error('Token saqlashda xato:', error);
       }
     }
-  }, []);
-
-  // Token o‘zgarganda localStorage'ga saqlash
-  useEffect(() => {
-    if (typeof window !== "undefined" && token) {
-      localStorage.setItem("token", JSON.stringify(token));
-    }
-  }, [token]);
+  };
 
   return (
-    <Context.Provider value={{ showCategory, setShowCategory, setToken, token }}>
+    <Context.Provider value={{ 
+      showCategory, 
+      setShowCategory, 
+      token, 
+      setToken: handleSetToken 
+    }}>
       {children}
     </Context.Provider>
   );

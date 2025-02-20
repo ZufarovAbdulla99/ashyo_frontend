@@ -1,8 +1,6 @@
-import React, { SetStateAction } from "react";
-
 export interface ContextType {
-    showCategory:boolean,
-    setShowCategory:React.Dispatch<SetStateAction<boolean>>,
-    token:string | null,
-    setToken:React.Dispatch<SetStateAction<string | null>>
-}
+    showCategory: boolean;
+    setShowCategory: React.Dispatch<React.SetStateAction<boolean>>;
+    token: string | null;
+    setToken: (newToken: string | null) => void;  // Oddiy funksiya tipiga o'zgartirish
+  }

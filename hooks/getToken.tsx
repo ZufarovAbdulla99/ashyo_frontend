@@ -1,10 +1,20 @@
-import { Context } from '@/context/Context'
-import React, { useContext } from 'react'
+import { Context } from '@/context/Context';
+import { useContext, useEffect, useState } from 'react';
 
 const getToken = () => {
- const {token, setToken} = useContext(Context)
- const userId = Number(localStorage.getItem("userId"))
- return {token, setToken, userId}
-}
+  const { token, setToken } = useContext(Context);
+  const [userId, setUserId] = useState<number | null>(null);
 
-export default getToken
+  useEffect(() => {
+    if (typeof window !== 'undefined') { 
+      const storedUserId = localStorage.getItem("userId");
+      if (storedUserId) {
+        setUserId(Number(storedUserId));
+      }
+    }
+  }, []);
+
+  return { token, setToken, userId };
+};
+
+export default getToken;

@@ -17,7 +17,7 @@ const ProductItemV2:FC<{item:ProductItemType}> = ({item}) => {
     const queryClient = useQueryClient()
 
     const likeMutation = useMutation({
-        mutationFn:(data:{productId:number, userId:number}) => instance().post("/like/toggle", data, {
+        mutationFn:(data:{productId:number, userId:number | null}) => instance().post("/like/toggle", data, {
             headers:{
                 "Authorization":`Bearer ${token}`
             }
@@ -29,7 +29,7 @@ const ProductItemV2:FC<{item:ProductItemType}> = ({item}) => {
         })
     })
     const cartMutation = useMutation({
-        mutationFn:(data:{product_id:number, user_id:number, quantity:number,price:number }) => instance().post("/cart-item", data, {
+        mutationFn:(data:{product_id:number, user_id:number | null, quantity:number,price:number }) => instance().post("/cart-item", data, {
             headers:{
                 "Authorization":`Bearer ${token}`
             }

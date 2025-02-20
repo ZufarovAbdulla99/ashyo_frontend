@@ -17,12 +17,12 @@ const ProductItem:FC<{item:ProductItemType}> = ({item}) => {
     const router = useRouter()
     const {token, userId} = getToken()
     const queryClient = useQueryClient()
-    const {likeList } = getLikesIdsArray(userId)
+    const {likeList } = getLikesIdsArray()
     // console.log(likeList, userId)  
     // likeList.forEach((likedProducts:ProductItemType) => console.log(likedProducts.id === item.id))
 
     const likeMutation = useMutation({
-        mutationFn:(data:{productId:number, userId:number}) => instance().post("/like/toggle", data, {
+        mutationFn:(data:{productId:number, userId:number | null}) => instance().post("/like/toggle", data, {
             headers:{
                 "Authorization":`Bearer ${token}`
             }
@@ -35,7 +35,7 @@ const ProductItem:FC<{item:ProductItemType}> = ({item}) => {
     })
 
     const cartMutation = useMutation({
-        mutationFn:(data:{product_id:number, user_id:number, quantity:number,price:number }) => instance().post("/cart-item", data, {
+        mutationFn:(data:{product_id:number, user_id:number | null, quantity:number,price:number }) => instance().post("/cart-item", data, {
             headers:{
                 "Authorization":`Bearer ${token}`
             }

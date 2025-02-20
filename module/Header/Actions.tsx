@@ -13,8 +13,7 @@ import Link from 'next/link'
 const Actions = () => {
     const {likeList} = getLikes()
     const {cartList} = getCarts()
-    console.log(cartList);
-    
+    // console.log(cartList);
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const {setToken} = useContext(Context)
