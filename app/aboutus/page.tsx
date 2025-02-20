@@ -63,23 +63,23 @@ export default function AshyoPage() {
 
             <div className="space-y-4 text-gray-600">
               <p>
-                Ashyo - bozor narhid maishiy texnika va electronics dukonlari qurilmalari. 2 oydan davomid mizhozlarga
-                keng assortimentdagi mahsulotlarni, kafolatli va benson hizmatni taklif etib keladi.
+                Ashyo - bozor narhida maishiy texnika va electronics dukonlari qurilmalari. 2 oydan davomid mijozlarga
+                keng assortimentdagi mahsulotlarni, kafolatli va benuhson xizmatni taklif etib keladi.
               </p>
 
               <p>
-                Ashyo 2022 yilda Toshkent shahrida tashkil etylgan. Bugungi kunga qadar jami poytaxtda va viloyatlarda
-                26 that dukon faoliyat ko'rsatmoqda.
+                Ashyo 2022 yilda Toshkent shahrida tashkil etilgan. Bugungi kunga qadar jami poytaxtda va viloyatlarda
+                26 that dukon faoliyat ko&apos;rsatmoqda.
               </p>
 
               <p>
                 Siz tovarlarni har kanday kulay usulda sotib olishingiz mumkin: tarmoq dukonlarida yoki website. Maishiy
-                uchun texnikasi onlayn b'lib t'lov rezhashi mavjud. Ruyhatdan utish uchun zarur bulgan huzhzhat - bu
+                uchun texnikasi onlayn bo&apos;lib to&apos;lov rezhashi mavjud. Ruyhatdan utish uchun zarur bulgan huzhzhat - bu
                 pasport.
               </p>
 
               <p>
-                Yuridik shahslar uchun pul o'tkazish yo'li bilan, eng muximi - qo'shimcha to'lovlarsiz sotib olish
+                Yuridik shahslar uchun pul o&apos;tkazish yo&apos;li bilan, eng muximi - qo&apos;shimcha to&apos;lovlarsiz sotib olish
                 mumkin.
               </p>
             </div>

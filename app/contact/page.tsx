@@ -3,7 +3,6 @@
 import { useState } from "react"
 import Button from "@/components/Button"
 import Input from "@/components/Input"
-import Modal from "@/components/Modal"
 import ModalContact from "@/components/ModalContact"
 import Products from "@/components/Products"
 
@@ -43,8 +42,8 @@ export default function ContactPage() {
       <div className="mb-12 space-y-4">
         <h1 className="text-4xl font-bold tracking-tight">Qayta aloqa</h1>
         <p className="text-lg text-gray-600">
-          Bizning ishimiz haqidagi fikr mulohazalaringiz bilan bo'lishing yoki izohlar maydonida o'zingizni qiziqtirgan
-          savolingizni yo'llang
+          Bizning ishimiz haqidagi fikr mulohazalaringiz bilan bo&apos;lishing yoki izohlar maydonida o&apos;zingizni qiziqtirgan
+          savolingizni yo&apos;llang
         </p>
       </div>
 
@@ -91,7 +90,7 @@ export default function ContactPage() {
 
       <ModalContact isOpen={showModal} onClose={() => setShowModal(false)}>
         <h2 className="text-2xl font-bold mb-4">Rahmat!</h2>
-        <p>Sizning xabaringiz muvaffaqiyatli yuborildi. Tez orada siz bilan bog'lanamiz.</p>
+        <p>Sizning xabaringiz muvaffaqiyatli yuborildi. Tez orada siz bilan bog&apos;lanamiz.</p>
       </ModalContact>
     </div>
     <Products title="Most popular product" API='/product-items'/>

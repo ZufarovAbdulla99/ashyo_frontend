@@ -1,16 +1,14 @@
 "use client";
-
 import { Loader2 } from "lucide-react";
 import ProductItemV2 from "@/components/ProductItemv2";
 import { ProductItemType } from "@/types/ProductsType";
-import { useState, useEffect } from "react";
 import getToken from "@/hooks/getToken";
 import { instance } from "@/hooks/instance";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 export default function LikePage() {
   const { token, userId } = getToken();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   const fetchLikes = async () => {
     const response = await instance().get(`/like/user/${userId}`, {
@@ -27,22 +25,22 @@ export default function LikePage() {
     staleTime: 0,
   });
 
-  const likeMutation = useMutation({
-    mutationFn: (data: { productId: number; userId: number }) =>
-      instance().post("/like/toggle", data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ["like_list"]});
-    },
-  });
+  // const likeMutation = useMutation({
+  //   mutationFn: (data: { productId: number; userId: number }) =>
+  //     instance().post("/like/toggle", data, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     }),
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({queryKey: ["like_list"]});
+  //   },
+  // });
 
-  function handleLikeClick(productId: number) {
-    const data = { productId, userId };
-    likeMutation.mutate(data);
-  }
+  // function handleLikeClick(productId: number) {
+  //   const data = { productId, userId };
+  //   likeMutation.mutate(data);
+  // }
 
   if (isLoading) {
     return (

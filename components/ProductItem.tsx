@@ -3,7 +3,7 @@
 import { IMAGE_API } from '@/hooks/getEnv'
 import { ProductItemType } from '@/types/ProductsType'
 import Image from 'next/image'
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import Button from './Button'
 import { BasketCartIcon, CompareIcon, LikeIcon } from '@/icons'
 import getToken from '@/hooks/getToken'
@@ -11,14 +11,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { instance } from '@/hooks/instance'
 import { useRouter } from 'next/navigation'
 import { FcLike } from "react-icons/fc";
-import { getLikes } from '@/service/getLikes'
 import { getLikesIdsArray } from '@/service/getLikesIdsArray'
 
 const ProductItem:FC<{item:ProductItemType}> = ({item}) => {
     const router = useRouter()
     const {token, userId} = getToken()
     const queryClient = useQueryClient()
-    const {likeList, isLoading } = getLikesIdsArray(userId)
+    const {likeList } = getLikesIdsArray(userId)
     // console.log(likeList, userId)  
     // likeList.forEach((likedProducts:ProductItemType) => console.log(likedProducts.id === item.id))
 

@@ -8,13 +8,14 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import React, { useState } from 'react'
 import Products from '../../../components/Products'
+import { ConfigurationType } from '@/types/ProductsType'
 
 const SingleProducts = () => {
     const {id} = useParams()
     const [showComment, setShowComment] = useState<"Varation" | "Comments">("Varation")
     const productid = Array.isArray(id) ? id[0] : id
     const {singleProducts} = getSingleProduct(productid)
-
+    // console.log(singleProducts)
   return (
     <div className='containers !pt-10'>
         <h2 className='font-bold text-[32px] leading-[41px] mb-[31px]'>{singleProducts?.product?.name}</h2>
@@ -53,7 +54,7 @@ const SingleProducts = () => {
           </ul>
           <div className='w-[651px]'>
             {showComment == "Comments" ? "Comment" : 
-              singleProducts.configurations?.map((item:any) => (
+              singleProducts.configurations?.map((item:ConfigurationType) => (
               <div key={item.id} className='py-[5px] border-b-[2px] text-[#545D6A] text-[18px] border-slate3400 border-dashed flex justify-between'>
                 <div className='w-[50%]'>{item?.variationOption?.variation?.name}</div>
                 <div className='w-[50%]'>{item?.variationOption?.value}</div>
